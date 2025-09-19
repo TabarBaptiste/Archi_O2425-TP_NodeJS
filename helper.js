@@ -1,6 +1,6 @@
 exports.handleError = (res, error, message) => {
     // Log de l'erreur pour debug
-    console.error('Error details:', error);
+    // console.error('Error details:', error);
     
     if(error.name === 'SequelizeValidationError'){
         return res.status(400).json({ message, data: error.errors.map(e => e.message) });

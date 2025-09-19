@@ -42,8 +42,8 @@ module.exports = (app) => {
         const { monumentId } = req.params;
         
         // Debug de l'authentification
-        console.log('req.user:', req.user);
-        console.log('req.headers.authorization:', req.headers.authorization);
+        // console.log('req.user:', req.user);
+        // console.log('req.headers.authorization:', req.headers.authorization);
         
         const userId = req.user?.id;
         

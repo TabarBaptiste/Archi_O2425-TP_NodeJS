@@ -9,7 +9,10 @@ const setupSocketServer = require('./src/socket');
 
 const app = express()
 const server = http.createServer(app);
-setupSocketServer(server);
+const io = setupSocketServer(server);
+
+// Rendre l'instance socket.io accessible aux routes
+app.set('io', io);
 
 function nightBlocker (req, res, next){
     const hour = new Date().getHours();
@@ -28,6 +31,7 @@ app
     .use(nightBlocker)
     .use(favicon(__dirname + '/favicon.ico'))
     .use(morgan("dev"))
+    .use('/client', express.static('client'))
     .use(auth)
     
 require('./src/docs/swagger')(app)
